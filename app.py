@@ -6,18 +6,18 @@ app = Flask(__name__)
 def index():
   return render_template('index.html')
 
-@app.route('/stock',methods=['post'])
+@app.route('/stock',methods=['post','get'])
 def closingprice():
    from bokeh.plotting import figure, output_file, show
-   stockcode = flask.request.values.get("id")
+   stockcode = request.args.get('id')
    df = pd.read_csv('data.csv')
    df = df[df['ticker']==stockcode]
    df.sort_values(by=['date'])
 
    x = pd.to_datetime(df['date']).dt.day
    y = df['close']
-
    output_file("lines.html")
+
    p = figure(title="closing price", x_axis_label='date',y_axis_label='price')
    p.line(x, y, legend="price", line_width=2)  
    return show(p)
