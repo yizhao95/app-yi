@@ -7,9 +7,9 @@ app = Flask(__name__)
 def index():
   return render_template('index.html')
 
-@app.route('/stock',methods=['post','get'])
+@app.route('/stock',methods=["post","get"])
 def closingprice():
-   stockcode = request.args.get('id')
+   stockcode = request.args.get("stock")
    df = pd.read_csv('data.csv')
    df = df[df['ticker']==stockcode]
    df.sort_values(by=['date'])
