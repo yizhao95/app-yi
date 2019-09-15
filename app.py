@@ -23,6 +23,7 @@ def closingprice():
    p.line(x, y, legend="price", line_width=2) 
    script, div = components(p)
    return render_template('result.html', script=script,div=div)
+   show(p)
 
 if __name__ == '__main__':
   app.run(port=33507)
