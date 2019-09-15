@@ -1,5 +1,6 @@
 gunicorn==19.9.0
 requests==2.20.0
 flask
-numpy==1.6.2
+numpy
 bokeh
+pandas
