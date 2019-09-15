@@ -13,6 +13,7 @@ def closingprice():
    df = pd.read_csv('data.csv')
    df = df[df['ticker']==stockcode]
    df.sort_values(by=['date'])
+   output_file("lines.html")
 
    x = pd.to_datetime(df['date']).dt.day
    y = df['close']
