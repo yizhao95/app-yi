@@ -9,7 +9,7 @@ def index():
 
 @app.route('/stock',methods=['post','get'])
 def closingprice():
-   stockcode = request.args('id')
+   stockcode = request.args.get('id')
    df = pd.read_csv('data.csv')
    df = df[df['ticker']==stockcode]
    df.sort_values(by=['date'])
