@@ -20,7 +20,7 @@ def closingprice():
    y = df['close']
 
    p = figure(title="closing price", x_axis_label='date',y_axis_label='price')
-   p.line(x, y, legend="price", line_width=2) 
+
    script, div = components(p)
    return render_template('result.html', script=script,div=div)
    show(p)
