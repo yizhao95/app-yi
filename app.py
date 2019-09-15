@@ -6,7 +6,7 @@ app = Flask(__name__)
 def index():
   return render_template('index.html')
 
-@app.route('/stock',methods='get')
+@app.route('/stock',methods=['get'])
 def closingprice():
    from bokeh.plotting import figure, output_file, show
    stockcode = request.args.get("id")
