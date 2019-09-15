@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect
 import pandas as pd
-from bokeh.plotting import figure, output_file, show
+from bokeh.plotting import figure, output_file
+from bokeh.embed import components
 app = Flask(__name__)
 
 @app.route('/')
@@ -19,8 +20,9 @@ def closingprice():
    y = df['close']
 
    p = figure(title="closing price", x_axis_label='date',y_axis_label='price')
-   p.line(x, y, legend="price", line_width=2)  
-   return show(p)
+   p.line(x, y, legend="price", line_width=2) 
+   script, div = components(p)
+   return render_template('result.html', script=script,div=div)
 
 if __name__ == '__main__':
   app.run(port=33507)
